@@ -24,9 +24,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-top: 140px;
+            padding-top: 80px;
         }
 
+        /* HEADER */
         .header {
             background-color: #8c6a4a;
             color: #fffaf0;
@@ -36,38 +37,9 @@
             font-family: 'Roboto Slab', serif;
             font-size: 28px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
         }
 
-        .navbar {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 20px 0;
-            gap: 15px;
-            position: fixed;
-            top: 70px;
-            z-index: 999;
-            width: 100%;
-        }
-
-        .nav-link {
-            color: #fffaf0;
-            background-color: #a1866f;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            background-color: #e2c28d;
-            color: #3e3e3e;
-        }
-
+        /* PHOTO */
         .photo {
             width: 180px;
             height: 180px;
@@ -105,7 +77,6 @@
         section h2 {
             font-family: 'Roboto Slab', serif;
             margin-bottom: 15px;
-            color: #3e3e3e;
         }
 
         section p, section li {
@@ -134,16 +105,10 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        .card h3 {
-            font-family: 'Roboto Slab', serif;
-            color: #3e3e3e;
-            padding: 15px;
-        }
+        .card h3 { padding: 15px; }
+        .card p { padding: 0 15px 15px 15px; }
 
-        .card p {
-            padding: 0 15px 15px 15px;
-        }
-
+        /* FOOTER */
         .footer {
             text-align: center;
             padding: 25px 0;
@@ -159,7 +124,6 @@
         }
 
         @media(max-width: 768px) {
-            .navbar { flex-direction: column; top: 60px; gap: 10px; }
             .grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -169,14 +133,6 @@
 
 <div class="header">Portfolio</div>
 
-<div class="navbar">
-    <a href="#about" class="nav-link">À propos</a>
-    <a href="#skills" class="nav-link">Compétences</a>
-    <a href="#experience" class="nav-link">Expérience</a>
-    <a href="#education" class="nav-link">Éducation</a>
-    <a href="#contact" class="nav-link">Contact</a>
-</div>
-
 <div class="portfolio">
 
     <div class="photo">
@@ -185,10 +141,9 @@
 
     <div class="name-under-photo">Anselme</div>
 
-    <!-- SECTIONS -->
     <section id="about">
         <h2>Profil</h2>
-        <p>Étudiant débutant à l'université EMIT (École de management et d'innovation technologique) à Fianarantsoa. Innovant, dynamique, organisé et motivé.</p>
+        <p>Étudiant débutant à l'université EMIT à Fianarantsoa. Innovant, dynamique, organisé et motivé.</p>
     </section>
 
     <section id="skills">
@@ -212,7 +167,7 @@
             </div>
             <div class="card">
                 <h3>Analyse scientifique</h3>
-                <p>Suivi et analyse des résultats scientifiques pour les travaux universitaires.</p>
+                <p>Suivi et analyse des résultats scientifiques.</p>
             </div>
         </div>
     </section>
@@ -236,6 +191,7 @@
         <p>Numéro : 038218617<br>Email : razafisonvander@gmail.com<br>Lieu : Andrainjato</p>
     </section>
 
+    <!-- FOOTER (inchangé) -->
     <div class="footer">
         <div class="footer-nav">
             <a href="#about">À propos</a>
@@ -248,39 +204,6 @@
     </div>
 
 </div>
-
-<!-- JAVASCRIPT (inchangé) -->
-<script>
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-});
-
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (pageYOffset >= sectionTop) {
-            current = section.getAttribute('id');
-        }
-    });
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-            link.classList.add('active');
-        }
-    });
-});
-</script>
 
 </body>
 </html>
